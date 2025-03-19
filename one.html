@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+      font-family:
+      font-style:
+      font-color:
+    </style>
+  </head>
+  
+  <div id=test></div>
+  <div class="demo">Here is some text to try!</div>
+  <div class="demo">here is the next line</div>
+
+  <style type="text/css"> 
+      .demo {
+          display: none;
+          font-size: 15pt;
+          color: green;
+      }
+  </style>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript" src="jquerytypewriter.js"></script>
+  <script type="text/javascript">
+  
+  $(document).ready(function() {
+      $('.demo').typewrite({
+          'callback': function(){
+              $('.demo').css('background-color','red');
+          },
+          'delay': 100
+  
+      });
+  });
+  
+  </script>
+  
+</html>
