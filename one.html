@@ -1,42 +1,56 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
     <style>
-      font-family:
-      font-style:
-      font-color:
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier Prime', monospace;
+            padding: 20px;
+        }
+    
+        .typewriter {
+            font-size: 18pt;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+        }
     </style>
-  </head>
-  
-  <div id=test></div>
-  <div class="demo">Here is some text to try!</div>
-  <div class="demo">here is the next line</div>
+</head>
 
-  <style type="text/css"> 
-      .demo {
-          display: none;
-          font-size: 15pt;
-          color: green;
-      }
-  </style>
-  
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-  <script type="text/javascript" src="jquerytypewriter.js"></script>
-  <script type="text/javascript">
-  
-  $(document).ready(function() {
-      $('.demo').typewrite({
-          'callback': function(){
-              $('.demo').css('background-color','red');
-          },
-          'delay': 100
-  
-      });
-  });
-  
-  </script>
-  
+<body>
+    <div id="start-screen">
+      <button onclick="start{}">Start</button>
+    </div>
+    <div id="typewriter-text"></div>
+
+    <script>
+        function start{}
+          document.getElementById(start-screen)
+        }
+        const text = "Here is some text to try!\nHere is the next line.";
+        let index = 0;
+        const speed = 100; // Typing speed in milliseconds
+        const container = document.getElementById("typewriter-text");
+
+        function type() {
+            if (index < text.length) {
+                container.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+                index++;
+                setTimeout(type, speed);
+            } else {
+                container.style.borderRight = "none"; // Remove blinking cursor after completion
+            }
+        }
+
+        container.classList.add("typewriter");
+        type();
+    </script>
+</body>
 </html>
+    </style>
+</head>
