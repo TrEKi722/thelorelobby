@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div id="start-screen">
+    <div id="start-screen" style="width="100%">
       <button onclick="startTyping()" style="margin: auto;">Start</button>
     </div>
     <div id="typewriter-text" style="display: none;"></div>
@@ -50,7 +50,19 @@
                 container.innerHTML += (text[index] === "\n" ? "<br>" : text[index]) + "_"; // Add next letter + cursor
                 index++;
                 setTimeout(typeCharacter, speed);
+            } else {
+                remove();
             }
+        }
+        
+        function remove() {
+            document.getElementById("typewriter-text").innerHTML = document.getElementById("typewriter-text").innerHTML.slice(0, -1); // Remove previous "_"
+            setTimeout(add, 1000);
+        }
+        
+        function add() {
+            document.getElementById("typewriter-text").innerHTML += "_"; // Add next letter + cursor
+            setTimeout(remove, 1000);
         }
 
     </script>
