@@ -12,7 +12,13 @@
             font-family: 'Courier Prime', monospace;
             padding: 20px;
         }
-    
+        
+        button{
+            border-color: green;
+            font-family: 'Courier Prime', monospace;
+            color: green;
+        }
+        
         .typewriter {
             font-size: 18pt;
             white-space: pre-wrap;
@@ -57,12 +63,12 @@
         
         function remove() {
             document.getElementById("typewriter-text").innerHTML = document.getElementById("typewriter-text").innerHTML.slice(0, -1); // Remove previous "_"
-            setTimeout(add, 1000);
+            setTimeout(add, 500);
         }
         
         function add() {
             document.getElementById("typewriter-text").innerHTML += "_"; // Add next letter + cursor
-            setTimeout(remove, 1000);
+            setTimeout(remove, 500);
         }
 
     </script>
