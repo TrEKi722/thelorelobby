@@ -1,0 +1,14 @@
+[
+  {
+    "id": "entry1",
+    "title": "The Lost Archive",
+    "text": "Deep beneath the city, hidden in the underlevels of Coruscant, lies a forgotten archive...",
+    "next": "entry2"
+  },
+  {
+    "id": "entry2",
+    "title": "The Trickster’s Hint",
+    "text": "A mysterious figure leaves you a clue scratched into a datapad...",
+    "next": "entry3"
+  }
+]
