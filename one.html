@@ -24,31 +24,35 @@
 
 <body>
     <div id="start-screen">
-      <button onclick="start{}">Start</button>
+      <button onclick="type()" style="margin: auto;">Start</button>
     </div>
-    <div id="typewriter-text"></div>
+    <div id="typewriter-text" style="display: none;"></div>
 
     <script>
-        function start{}
-          document.getElementById(start-screen)
-        }
         const text = "Here is some text to try!\nHere is the next line.";
         let index = 0;
         const speed = 100; // Typing speed in milliseconds
-        const container = document.getElementById("typewriter-text");
 
-        function type() {
+
+        function startTyping() {
+            document.getElementById("start-screen").style.display = "none";
+            document.getElementById("typewriter-text").style.display = "block";
+            const container = document.getElementById("typewriter-text");
+            container.innerHTML = "_"; // Start with just the cursor
+            typeCharacter();
+        }
+
+        function typeCharacter() {
+            const container = document.getElementById("typewriter-text");
+
             if (index < text.length) {
-                container.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+                container.innerHTML = container.innerHTML.slice(0, -1); // Remove previous "_"
+                container.innerHTML += (text[index] === "\n" ? "<br>" : text[index]) + "_"; // Add next letter + cursor
                 index++;
-                setTimeout(type, speed);
-            } else {
-                container.style.borderRight = "none"; // Remove blinking cursor after completion
+                setTimeout(typeCharacter, speed);
             }
         }
 
-        container.classList.add("typewriter");
-        type();
     </script>
 </body>
 </html>
