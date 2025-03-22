@@ -10,15 +10,15 @@
             background-color: black;
             color: green;
             font-family: 'Courier Prime', monospace;
-            padding: 20px;
+            padding: 45px;
         }
         
         button{
             border-color: green;
             font-family: 'Courier Prime', monospace;
-            font-size: 65px;
+            font-size: 55px;
             color: green;
-            padding:20px;
+            padding: 20px;
             background-color: black;
         }
         
@@ -38,12 +38,24 @@
     <div id="typewriter-text" style="display: none;"></div>
 
     <script>
-        const text = "Here is some text to try!\nHere is the next line.";
+        let text = '';
         let index = 0;
         const speed = 100; // Typing speed in milliseconds
-
+    
+        fetch("lore.json") // Replace with the actual path to your JSON file
+        .then(response => response.json())
+        .then(data => {
+            const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
+            text = loreEntry.text;
+        })
+        .catch(error => console.error("Error fetching lore:", error));
 
         function startTyping() {
+            if (text === '') {
+                console.log('Lore is still loading...');
+                return; // Prevent typing if text is still empty
+            }
+            
             document.getElementById("start-screen").style.display = "none";
             document.getElementById("typewriter-text").style.display = "block";
             const container = document.getElementById("typewriter-text");
