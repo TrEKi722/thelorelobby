@@ -45,11 +45,13 @@
         fetch("content.json") // Replace with the actual path to your JSON file
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Check if the data is correctly fetched
             const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
             text = loreEntry.text;
             console.log(text + "; complete");
         })
         .catch(error => console.error("Error fetching lore:", error));
+
 
         function startTyping() {
             if (text === '') {
