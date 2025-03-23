@@ -1,12 +1,10 @@
 [
   {
     "id": "entry1",
-    "title": "The Lost Archive",
-    "text": "[REDACTED]: Hello weary traveler! This is the LoreCut. If this is not where you intend to be... then LEAVE \n \n [REDACTED]: Hello! By the looks of it, you have ended up in my humble speeder. I found you drunk in a bar a few kilometres back and figured I'd pick you up. What's this? You think you're being kidnapped? Uhm... No? Anyways, I'll let you out in a bit, first I want to give you something. \n *You have recieved a datacore from [REDACTED]* \n [REDACTED]: By the way, my name is *Archaos*, it's nice to meet you.",
+    "text": "[REDACTED]: Hello weary traveler! This is the LoreCut. If this is not where you intend to be... then LEAVE \n \n [REDACTED]: Hello! By the looks of it, you have ended up in my humble speeder. I found you drunk in a bar a few kilometres back and figured I'd pick you up. What's this? You think you're being kidnapped? Uhm... No? Anyways, I'll let you out in a bit, first I want to give you something. \n *You have received a datacore from [REDACTED]* \n [REDACTED]: By the way, my name is *Archaos*, it's nice to meet you."
   },
   {
     "id": "entry2",
-    "title": "The Trickster’s Hint",
     "text": "A mysterious figure leaves you a clue scratched into a datapad..."
   }
 ]
