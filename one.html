@@ -38,50 +38,35 @@
     <div id="typewriter-text" style="display: none;"></div>
 
     <script>
-        let text = ''; // Declare outside to ensure access from both fetch and startTyping()
+        let text = '';
         let index = 0;
-        const speed = 100;
-        
-        fetch("https://raw.githubusercontent.com/TrEKi722/thelorelobby/main/content.json")
-          .then(response => response.json())  // Parse JSON directly
-          .then(data => {
-              console.log("Fetched Data:", data); // ✅ Check if JSON loads correctly
-        
-              if (!Array.isArray(data)) {
-                  console.error("❌ JSON is not an array:", data);
-                  return;
-              }
-        
-              const loreEntry = data.find(entry => entry.id === "entry1");
-              if (loreEntry) {
-                  text = loreEntry.text;
-                  console.log("✅ Loaded Lore Text:", text); // ✅ Ensure text is loaded
-              } else {
-                  console.error("❌ Entry 'entry1' not found.");
-              }
-          })
-          .catch(error => console.error("❌ Fetch Error:", error));
-        
-        // Start typing when the button is clicked
+        const speed = 100; // Typing speed in milliseconds
+    
+        fetch("content.json") // Replace with the actual path to your JSON file
+        .then(response => response.json())
+        .then(data => {
+            const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
+            text = loreEntry.text;
+            console.log(text + \n + "complete");
+        })
+        .catch(error => console.error("Error fetching lore:", error));
+
         function startTyping() {
-            if (!text || text === "Error: Entry not found.") {
-                console.log('❌ Lore is still loading...');
-                return;  // Don't start typing if text is still empty
+            if (text === '') {
+                console.log('Lore is still loading...');
+                return; // Prevent typing if text is still empty
             }
-        
-            console.log("✅ Starting Typing:", text);
-        
+            
             document.getElementById("start-screen").style.display = "none";
             document.getElementById("typewriter-text").style.display = "block";
             const container = document.getElementById("typewriter-text");
             container.innerHTML = "_"; // Start with just the cursor
             typeCharacter();
         }
-        
-        // Function to type out the text character by character
+
         function typeCharacter() {
             const container = document.getElementById("typewriter-text");
-        
+
             if (index < text.length) {
                 container.innerHTML = container.innerHTML.slice(0, -1); // Remove previous "_"
                 container.innerHTML += (text[index] === "\n" ? "<br>" : text[index]) + "_"; // Add next letter + cursor
