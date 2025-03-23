@@ -42,13 +42,14 @@
         let index = 0;
         const speed = 100; // Typing speed in milliseconds
     
-        fetch("content.json") // Replace with the actual path to your JSON file
-        .then(response => response.json())
-        .then(data => {
-            const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
-            text = loreEntry.text;
+        fetch("https://raw.githubusercontent.com/TrEKi722/thelorelobby/main/content.json")
+          .then(response => response.json())  // Force JSON parsing
+          .then(data => {
+              const loreEntry = data.find(entry => entry.id === "entry1"); // Adjust based on your JSON structure
+              text = loreEntry ? loreEntry.text : "Error: Entry not found.";
         })
         .catch(error => console.error("Error fetching lore:", error));
+
 
         function startTyping() {
             if (text === '') {
