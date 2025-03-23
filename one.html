@@ -47,7 +47,7 @@
         .then(data => {
             const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
             text = loreEntry.text;
-            console.log(text + \n + "complete");
+            console.log(text + "; complete");
         })
         .catch(error => console.error("Error fetching lore:", error));
 
@@ -90,5 +90,3 @@
     </script>
 </body>
 </html>
-    </style>
-</head>
