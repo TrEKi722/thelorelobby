@@ -42,7 +42,7 @@
         let index = 0;
         const speed = 100; // Typing speed in milliseconds
     
-        fetch("media/lore.json") // Replace with the actual path to your JSON file
+        fetch("/media/lore.json") // Replace with the actual path to your JSON file
         .then(response => response.json())
         .then(data => {
             const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
