@@ -42,16 +42,18 @@
     </div>
     
     <script>
-        let text = '';
+        let text = "";
         let index = 0;
+        let loreEntry = "";
+        let core = "";
         const speed = 50; // Typing speed in milliseconds
 
         fetch("content.json")
             .then(response => response.json())
             .then(data => {
                 console.log(data); // Check if the data is correctly fetched
-                const loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
-                const core = data.find(entry => entry.id === "dataCore"); // Get core data
+                loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
+                core = data.find(entry => entry.id === "dataCore"); // Get core data
             })
             .catch(error => console.error("Error fetching lore:", error));
 
@@ -65,6 +67,7 @@
             document.getElementById("typewriter-text").style.display = "block";
             const container = document.getElementById("typewriter-text");
             container.innerHTML = "_"; // Start with just the cursor
+            index = 0;
             typeCharacter(loreEntry);
         }
 
@@ -73,7 +76,7 @@
 
             if (index < text.length) {
                 container.innerHTML = container.innerHTML.slice(0, -1); // Remove previous "_"
-                if text[index] == "`" {
+                if (text[index] == "`") {
                     document.getElementById("options1").style.display = "block";
                 } else {
                 container.innerHTML += (text[index] === "\n" ? "<br>" : text[index]) + "_"; // Add next letter + cursor
@@ -98,9 +101,11 @@
         function viewCore() {
             document.getElementById("start-screen").style.display = "none";
             document.getElementById("typewriter-text").style.display = "block";
+            document.getElementById("options1").style.display = "none";
             const container = document.getElementById("typewriter-text");
             container.innerHTML = "_"; // Start with just the cursor
-            typeCharacter(loreEntry);
+            index = 0;
+            typeCharacter(core);
         };
 
     </script>
