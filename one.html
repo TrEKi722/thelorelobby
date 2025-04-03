@@ -52,8 +52,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data); // Check if the data is correctly fetched
-                loreEntry = data.find(entry => entry.id === "entry1"); // Get first entry
-                core = data.find(entry => entry.id === "dataCore"); // Get core data
+                loreEntry = data.find(entry => entry.id === "entry1")?.text || ""; // Get first entry
+                core = data.find(entry => entry.id === "dataCore")?.text || ""; // Get core data
             })
             .catch(error => console.error("Error fetching lore:", error));
 
@@ -62,13 +62,14 @@
                 console.log('Lore is still loading...');
                 return; // Prevent typing if text is still empty
             }
-            
+            console.log("Start Typing..." + loreEntry);
             document.getElementById("start-screen").style.display = "none";
             document.getElementById("typewriter-text").style.display = "block";
             const container = document.getElementById("typewriter-text");
             container.innerHTML = "_"; // Start with just the cursor
+            console.log(loreEntry.length);
             index = 0;
-            typeCharacter(loreEntry);
+            typeCharacter(loreEntry.toString);
         }
 
         function typeCharacter(text) {
@@ -82,6 +83,7 @@
                 container.innerHTML += (text[index] === "\n" ? "<br>" : text[index]) + "_"; // Add next letter + cursor
                 }
                 index++;
+                console.log(index);
                 setTimeout(typeCharacter, speed);
             } else {
                 remove();
